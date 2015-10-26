@@ -3,11 +3,12 @@ defmodule AutouchBackend.Touch do
 
   schema "touches" do
     field :box, :integer
+    field :touch_at, Ecto.DateTime
 
     timestamps
   end
 
-  @required_fields ~w(box)
+  @required_fields ~w(box touch_at)
   @optional_fields ~w()
 
   @doc """

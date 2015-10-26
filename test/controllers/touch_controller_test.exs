@@ -2,7 +2,7 @@ defmodule AutouchBackend.TouchControllerTest do
   use AutouchBackend.ConnCase
 
   alias AutouchBackend.Touch
-  @valid_attrs %{box: 42}
+  @valid_attrs %{box: 42, touch_at: "2015-10-20T01:15:30.051Z"}
   @invalid_attrs %{}
 
   setup do
