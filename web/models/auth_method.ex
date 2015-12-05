@@ -1,14 +1,15 @@
-defmodule AutouchBackend.User do
+defmodule AutouchBackend.AuthMethod do
   use AutouchBackend.Web, :model
 
-  schema "users" do
-    field :display_name, :string
-    has_many :auth_methods, AutouchBackend.AuthMethod
+  schema "auth_methods" do
+    field :provider_name, :string
+    field :provider_id, :string
+    belongs_to :user, AutouchBackend.User
 
     timestamps
   end
 
-  @required_fields ~w(display_name)
+  @required_fields ~w(user_id provider_name provider_id)
   @optional_fields ~w()
 
   @doc """

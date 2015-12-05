@@ -15,4 +15,11 @@ defmodule AutouchBackend.UserTest do
     changeset = User.changeset(%User{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  test "has many auth_methods" do
+    changeset = User.changeset(%User{}, @valid_attrs)
+    user = Repo.insert!(changeset)
+    auth_method = Ecto.Model.build(user, :auth_methods)
+    assert auth_method.__struct__ == AutouchBackend.AuthMethod
+  end
 end
