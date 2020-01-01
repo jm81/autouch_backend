@@ -1,6 +1,7 @@
 defmodule AutouchBackend.TouchController do
   use AutouchBackend.Web, :controller
 
+  alias AutouchBackend.Session
   alias AutouchBackend.Touch
 
   plug :scrub_params, "touch" when action in [:create, :update]
@@ -12,6 +13,8 @@ defmodule AutouchBackend.TouchController do
 
   def create(conn, %{"touch" => touch_params}) do
     changeset = Touch.changeset(%Touch{}, touch_params)
+
+    Session.authenticate(conn)
 
     case Repo.insert(changeset) do
       {:ok, touch} ->

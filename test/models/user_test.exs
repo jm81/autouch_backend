@@ -22,4 +22,11 @@ defmodule AutouchBackend.UserTest do
     auth_method = Ecto.Model.build(user, :auth_methods)
     assert auth_method.__struct__ == AutouchBackend.AuthMethod
   end
+
+  test "has many touches" do
+    changeset = User.changeset(%User{}, @valid_attrs)
+    user = Repo.insert!(changeset)
+    touch = Ecto.Model.build(user, :touches)
+    assert touch.__struct__ == AutouchBackend.Touch
+  end
 end

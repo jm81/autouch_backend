@@ -4,6 +4,7 @@ defmodule AutouchBackend.User do
   schema "users" do
     field :display_name, :string
     has_many :auth_methods, AutouchBackend.AuthMethod
+    has_many :touches, AutouchBackend.Touch
 
     timestamps
   end
